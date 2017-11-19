@@ -28,11 +28,11 @@ public class Task {
         this.ifPerformOnce = true;
     }
 
-    public int getNum() {
+    int getNum() {
         return num;
     }
 
-    public void proceed(double miu) {
+    void proceed(double miu) {
         proceedTime -= miu;
     }
 
@@ -42,6 +42,26 @@ public class Task {
 
     double getReactionTime() {
         return firstPerformTime - beginTime;
+    }
+
+    double getProceedTime() {
+        return proceedTime;
+    }
+
+    void setFinishTime(double finishTime) {
+        this.finishTime = finishTime;
+    }
+
+    void setFirstPerformTime(double firstPerformTime) {
+        this.firstPerformTime = firstPerformTime;
+    }
+
+    boolean ifPerformsFirst() {
+        return ifPerformOnce;
+    }
+
+    void setIfPerformOnce(boolean ifPerformFirst) {
+        this.ifPerformOnce = ifPerformFirst;
     }
 
     double getActual() {
@@ -56,47 +76,6 @@ public class Task {
             }
         }
     }
-
-    public double getProceedTime() {
-        return proceedTime;
-    }
-
-    public void setFinishTime(double finishTime) {
-        this.finishTime = finishTime;
-    }
-
-    public void setProceedTime(double proceedTime) {
-        this.proceedTime = proceedTime;
-    }
-
-    public double getBeginTime() {
-        return beginTime;
-    }
-
-    public void setBeginTime(double beginTime) {
-        this.beginTime = beginTime;
-    }
-
-    public double getFinishTime() {
-        return finishTime;
-    }
-
-    public double getFirstPerformTime() {
-        return firstPerformTime;
-    }
-
-    public void setFirstPerformTime(double firstPerformTime) {
-        this.firstPerformTime = firstPerformTime;
-    }
-
-    public boolean ifPerformsFirst() {
-        return ifPerformOnce;
-    }
-
-    public void setIfPerformOnce(boolean ifPerformOnce) {
-        this.ifPerformOnce = ifPerformOnce;
-    }
-
 
     @Override
     public String toString() {

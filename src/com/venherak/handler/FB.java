@@ -6,17 +6,21 @@ import com.venherak.TaskList;
 public class FB implements AbstractHandler {
     private Task currentTask;
     private int innerTime = 0;
-    private int k = 100;
+    private int queueSize;
+    private int quantTime;
+
+    public FB(int queueSize, int quantTime) {
+        this.quantTime = quantTime;
+        this.queueSize = queueSize;
+    }
 
     @Override
     public Task getCurrentTask(TaskList queue) {
         currentTask = queue.getHighestPriorityTask();
-        if(innerTime < 1) {
+        if(innerTime < quantTime) {
             innerTime++;
         } else {
-            if(currentTask.priority == k) {
-
-            } else {
+            if(currentTask.priority != queueSize) {
                 currentTask.priority++;
                 innerTime = 0;
             }

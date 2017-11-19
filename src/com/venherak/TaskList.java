@@ -52,13 +52,13 @@ public class TaskList extends ArrayList<Task> {
 
     public Task getHighestPriorityTask() {
         int max = 10000;
-        for(Task task: this) {
-            if(task.priority < max) {
+        for (Task task : this) {
+            if (task.priority < max) {
                 max = task.priority;
             }
         }
-        for(Task task: this) {
-            if(max == task.priority) {
+        for (Task task : this) {
+            if (max == task.priority) {
                 return task;
             }
         }
@@ -67,17 +67,15 @@ public class TaskList extends ArrayList<Task> {
 
     @Override
     public String toString() {
-        System.out.println("Mx = " + getAverageTimeInSystem());
-        System.out.println("D = " + getDispersionAverageTime());
-        System.out.println("Reaction = " + getAverageReactionTime());
-        System.out.println("Ratio actual/handled= " + (double) countActualTasks() / this.size());
-        System.out.println("Actual = " + getAverageActual());
-        System.out.print("F= ");
-        System.out.println(-4 * getAverageTimeInSystem()
+        return "Mx = " + getAverageTimeInSystem() + "\n" +
+                "D = " + getDispersionAverageTime() + "\n" +
+                "Reaction = " + getAverageReactionTime() + "\n" +
+                "Ratio actual/handled= " + (double) countActualTasks() / this.size() + "\n" +
+                "Actual = " + getAverageActual() + "\n" +
+                "F= " + (-4 * getAverageTimeInSystem()
                 + -4 * getDispersionAverageTime()
                 - 1 * getAverageReactionTime()
                 + 5 * (double) countActualTasks() / this.size()
-                + 3 * getAverageActual());
-        return " ";
+                + 3 * getAverageActual()) + "\n";
     }
 }

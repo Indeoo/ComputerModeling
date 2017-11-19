@@ -21,28 +21,28 @@ public class Main {
         System.out.println("RAND");
         Processor processor1 = new Processor(lambda, miu, M / 2, new RAND());
         TaskList finishedTasks1 = processor1.start(N);
-        finishedTasks1.toString();
-        System.out.println("EVERY 50");
+        System.out.println(finishedTasks1.toString());
+        System.out.println("RAND: EVERY 50");
         TaskList everyFiftyList1 = new TaskList();
         for (Task task : finishedTasks1) {
             if (task.getNum() % 50 == 0) {
                 everyFiftyList1.add(task);
             }
         }
-        everyFiftyList1.toString();
-        System.out.println();
+        System.out.println(everyFiftyList1.toString());
+
         System.out.println("FB");
-        Processor processor2 = new Processor(lambda, miu, M / 2, new FB());
+        Processor processor2 = new Processor(lambda, miu, M / 2, new FB(100, 1000));
         TaskList finishedTasks2 = processor2.start(N);
-        finishedTasks2.toString();
-        System.out.println("EVERY 50");
+        System.out.println(finishedTasks2.toString());
+        System.out.println("FB: EVERY 50");
         TaskList everyFiftyList2 = new TaskList();
         for (Task task : finishedTasks2) {
             if (task.getNum() % 50 == 0) {
                 everyFiftyList2.add(task);
             }
         }
-        everyFiftyList2.toString();
+        System.out.println(everyFiftyList2.toString());
     }
 
     static double getInputInterval(double lambda) {
