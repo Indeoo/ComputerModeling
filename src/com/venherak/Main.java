@@ -5,7 +5,7 @@ import com.venherak.handler.RAND;
 
 import static java.lang.Math.log;
 import static java.lang.Math.random;
-//
+
 public class Main {
     private static double lambda = 0.3;
     private static double miu = 0.5;
