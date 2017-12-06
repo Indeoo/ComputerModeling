@@ -1,7 +1,7 @@
-package com.venherak;
+package com.venherak.lab1;
 
-import com.venherak.handler.FB;
-import com.venherak.handler.RAND;
+import com.venherak.lab1.handler.FB;
+import com.venherak.lab1.handler.RAND;
 
 import static java.lang.Math.log;
 import static java.lang.Math.random;
