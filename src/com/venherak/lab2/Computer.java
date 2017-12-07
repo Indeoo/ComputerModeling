@@ -24,9 +24,8 @@ public class Computer {
             }
             systemTime += stepTime;
         }
-
         for (Device device : devices) {
-            System.out.println(device.getName() +  " " + device.getLoadCoeff(systemTime));
+            System.out.println(device.getName() + " " + device.getLoadCoeff(systemTime));
         }
     }
 
