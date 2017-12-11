@@ -9,13 +9,14 @@ public class Processor {
     private double miu;
     private double radius;
     private AbstractHandler handler;
-    private TaskList queue = new TaskList();
+    private TaskList queue;
 
     public Processor(double lambda, double miu, double radius, AbstractHandler handler) {
         this.handler = handler;
         this.radius = radius;
         this.lambda = lambda;
         this.miu = miu;
+        this.queue = new TaskList();
     }
 
     TaskList start(int N) {
@@ -24,6 +25,7 @@ public class Processor {
         int inputedTasks = 0;
         TaskList finishedTasks = new TaskList();
         Task currentTask;
+        double m = 0;
 
         while (finishedTasks.size() < N) {
             if (interval <= 0) {
@@ -51,7 +53,12 @@ public class Processor {
             }
             systemTime += 0.001;
             interval -= 0.001;
+            if(queue.size() > 0) {
+                m += queue.size() - 1;
+            }
         }
+        m /= (systemTime * 1000);
+        //System.out.println(m);
         return finishedTasks;
     }
 }

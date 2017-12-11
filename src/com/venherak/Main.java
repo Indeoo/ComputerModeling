@@ -1,3 +1,4 @@
+
 package com.venherak;
 
 import com.venherak.handler.FB;
@@ -7,8 +8,8 @@ import static java.lang.Math.log;
 import static java.lang.Math.random;
 
 public class Main {
-    private static double lambda = 0.3;
-    private static double miu = 0.5;
+    private static double lambda = 0.2;
+    private static double miu = 1;
     private static int N = 1000;
     private static int M = 2;
 
