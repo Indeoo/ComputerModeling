@@ -1,4 +1,4 @@
-package com.venherak;
+package com.venherak.lab1;
 
 import java.util.ArrayList;
 

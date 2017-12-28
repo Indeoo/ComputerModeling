@@ -1,7 +1,7 @@
-package com.venherak.handler;
+package com.venherak.lab1.handler;
 
-import com.venherak.Task;
-import com.venherak.TaskList;
+import com.venherak.lab1.Task;
+import com.venherak.lab1.TaskList;
 
 public class FB implements AbstractHandler {
     private Task currentTask;

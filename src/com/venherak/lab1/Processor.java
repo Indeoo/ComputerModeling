@@ -1,8 +1,8 @@
-package com.venherak;
+package com.venherak.lab1;
 
-import com.venherak.handler.AbstractHandler;
+import com.venherak.lab1.handler.AbstractHandler;
 
-import static com.venherak.Main.getInputInterval;
+import static com.venherak.lab1.Main.getInputInterval;
 
 public class Processor {
     private double lambda;
@@ -58,7 +58,7 @@ public class Processor {
             }
         }
         m /= (systemTime * 1000);
-        //System.out.println(m);
+        System.out.println(m);
         return finishedTasks;
     }
 }
