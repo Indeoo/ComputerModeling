@@ -8,20 +8,27 @@ public class Main {
     public static void main(String[] args) {
         Computer computer = new Computer(getMainConfiguration());
 
-        computer.start(0.001, 500.0);
+        computer.start(0.001, 5000.0);
     }
 
     private static List<Device> getMainConfiguration() {
         List<Device> deviceList = new ArrayList<>();
 
-        Device centralProcessor = new Device(5, 6, 2, 2, "CPU");
+        Device centralProcessor = new Device(5, 6, 2, 2, "CPU1");
+        //Device centralProcessor2 = new Device(5, 6, 1, 1, "CPU2");
+
+
+
         Device northBridge = new Device(2, 0, 1, 1, "NB");
         Device randomAccessMemory = new Device(3, 0, 1, 1, "RAM");
         Device southBridge = new Device(7, 0, 1, 1, "SB");
         Device videoProcessor = new Device(4, 0, 1, 1,"VP");
         Device cdDrive = new Device(1, 0, 1, 1,"KD");
         Device MA = new Device(5, 0, 1, 1,"MA");
+
         centralProcessor.getNextDevices().put(northBridge, 1.0);
+        //centralProcessor2.getNextDevices().put(northBridge, 1.0);
+
         videoProcessor.getNextDevices().put(centralProcessor, 1.0);
         MA.getNextDevices().put(southBridge, 1.0);
         cdDrive.getNextDevices().put(southBridge, 1.0);

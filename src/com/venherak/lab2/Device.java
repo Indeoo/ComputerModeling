@@ -8,9 +8,11 @@ public class Device {
     String name;
     private List<Task> currentTasks;
     private InputQueue beginQueue;
-    private AndQueue andQueue;
+    private AndElement andElement;
     private double tau;
-    private double workTime;
+    public double workTime;
+    public double workTime2;
+    private boolean free;
     private Map<Device, Double> nextDevices;
 
     public Device() {
@@ -19,11 +21,11 @@ public class Device {
         this.nextDevices = new HashMap<>();
     }
 
-    public Device(double tau, InputQueue inputQueue, AndQueue andQueue, String name) {
+    public Device(double tau, InputQueue inputQueue, AndElement andElement, String name) {
         this.currentTasks = new ArrayList<>();
         this.tau = tau;
         this.beginQueue = inputQueue;
-        this.andQueue = andQueue;
+        this.andElement = andElement;
         this.workTime = 0;
         this.nextDevices = new HashMap<>();
         this.name = name;
@@ -33,7 +35,7 @@ public class Device {
         this.currentTasks = new ArrayList<>();
         this.tau = tau;
         this.beginQueue = new InputQueue(inputCounter);
-        this.andQueue = new AndQueue(andCounter, andMax);
+        this.andElement = new AndElement(andCounter, andMax);
         this.workTime = 0;
         this.nextDevices = new HashMap<>();
         this.name = name;
@@ -48,8 +50,14 @@ public class Device {
     }
 
     public void proceed(double time) {
-        if (!this.checkFree()) {
-            workTime += time;
+
+        if(currentTasks.size() > 0) {
+            if (!this.checkFree()) {
+                workTime += time;
+            }
+            if(currentTasks.size() == 2) {
+                workTime2 +=time;
+            }
         }
 
         for (Task task : currentTasks) {
@@ -57,14 +65,14 @@ public class Device {
                 task.proceedTask(time);
             } else {
                 getNextDevice().beginQueue.incrementCounter();
-                this.andQueue.incrementCounter();
+                this.andElement.incrementCounter();
                 currentTasks.remove(task);
                 break;
             }
         }
-        if (beginQueue.getCounter() > 0 & andQueue.getCounter() > 0) {
+        if (beginQueue.getCounter() > 0 & andElement.getCounter() > 0) {
             beginQueue.decrementCounter();
-            andQueue.decrementCounter();
+            andElement.decrementCounter();
             currentTasks.add(new Task(tau));
         }
     }
@@ -98,12 +106,12 @@ public class Device {
         this.beginQueue = beginQueue;
     }
 
-    public AndQueue getAndQueue() {
-        return andQueue;
+    public AndElement getAndElement() {
+        return andElement;
     }
 
-    public void setAndQueue(AndQueue andQueue) {
-        this.andQueue = andQueue;
+    public void setAndElement(AndElement andElement) {
+        this.andElement = andElement;
     }
 
     public double getTau() {
@@ -154,6 +162,6 @@ public class Device {
 
     @Override
     public String toString() {
-        return name + " Average handle time: " + tau + " " + beginQueue + " " + andQueue + " " ;
+        return name + " Average handle time: " + tau + " " + beginQueue + " " + andElement + " " ;
     }
 }

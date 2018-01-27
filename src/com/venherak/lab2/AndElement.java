@@ -1,14 +1,14 @@
 package com.venherak.lab2;
 
-public class AndQueue {
+public class AndElement {
     private int counter;
     private int counterMax;
 
-    public AndQueue() {
+    public AndElement() {
 
     }
 
-    public AndQueue(int counter, int counterMax) {
+    public AndElement(int counter, int counterMax) {
         this.counter = counter;
         this.counterMax = counterMax;
     }

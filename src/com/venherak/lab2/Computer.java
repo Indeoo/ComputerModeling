@@ -24,6 +24,9 @@ public class Computer {
             }
             systemTime += stepTime;
         }
+        System.out.println("Core1    "  + devices.get(0).workTime / systemTime);
+        System.out.println("Core2    "  + devices.get(0).workTime2 / systemTime);
+        devices.remove(0);
         for (Device device : devices) {
             System.out.println(device.getName() + " " + device.getLoadCoeff(systemTime));
         }
